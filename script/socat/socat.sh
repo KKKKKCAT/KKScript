@@ -1,3 +1,10 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+PLAIN='\033[0m'
+
 # 定义函数来安装socat和服务
 install_socat_service() {
     # 1. 安装socat
@@ -133,7 +140,15 @@ remove_socat_service() {
 }
 
 # 更新主菜单
-echo "请选择操作："
+echo "#############################################################"
+echo -e "#                  ${RED}Socat 一键安装脚本${PLAIN}                  #"
+echo -e "# ${GREEN}作者${PLAIN}: KKKKKCAT                                  #"
+echo -e "# ${GREEN}博客${PLAIN}: ${GREEN}https://kkcat.blog${PLAIN}                            #"
+echo -e "# ${GREEN}GitHub 项目${PLAIN}: ${GREEN}https://github.com/KKKKKCAT/KKScript/tree/main/script/socat${PLAIN}               #"
+echo -e "# ${GREEN}Telegram 频道${PLAIN}: ${GREEN}https://t.me/kkkkkcat${PLAIN}              #"
+echo "#############################################################"
+
+echo -e "${GREEN}请选择操作：${PLAIN}"
 echo "1) 安装socat服务"
 echo "2) 启动socat服务"
 echo "3) 停止socat服务"
@@ -170,6 +185,6 @@ case $action in
         remove_cron_job
         ;;
     *)
-        echo "无效输入..."
+        echo -e "${RED}无效输入...${PLAIN}"
         ;;
 esac
