@@ -157,7 +157,7 @@ echo "2) 启动socat服务"
 echo "3) 停止socat服务"
 echo "4) 设置开机自启socat服务"
 echo "5) 检查socat服务状态"
-echo "6) ${RED}移除socat服务${PLAIN}"
+echo "${GREEN}6)${PLAIN} ${RED}移除socat服务${PLAIN}"
 echo "7) 添加定时更新任务"
 echo "8) ${RED}移除定时更新任务${PLAIN}"
 read -p "输入选择（1-8）: " action
