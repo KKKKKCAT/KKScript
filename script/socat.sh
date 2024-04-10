@@ -4,7 +4,10 @@ install_socat_service() {
     echo "正在安装socat..."
     sudo apt install socat -y
 
-    # 确定GitHub仓库的类型
+    # 输入GitHub文件URL
+    read -p "Enter the GitHub URL for socat_update.sh: " github_url
+
+    # 询问是否为公开仓库
     read -p "GitHub仓库是公开的吗？(y/n): " is_public
     if [[ $is_public == "n" ]]; then
         # 输入GitHub Token
@@ -12,11 +15,9 @@ install_socat_service() {
         echo ""
         token_header="Authorization: token $github_token"
     else
+        github_token=""  # 确保这个变量在脚本中被清空
         token_header=""
     fi
-
-    # 输入GitHub文件URL
-    read -p "Enter the GitHub URL for socat_update.sh: " github_url
 
     # 2. 创建systemd服务文件
     service_file="/etc/systemd/system/socat_combined.service"
@@ -55,8 +56,8 @@ EOF
 
 # 该脚本用于定期更新socat_wrapper.sh
 echo "Updating socat_wrapper.sh from GitHub..."
-if [[ -n "$token_header" ]]; then
-    sudo curl -H "$token_header" \
+if [[ -n "$github_token" ]]; then
+    sudo curl -H "Authorization: token $github_token" \
          -H 'Accept: application/vnd.github.v3.raw' \
          -L $github_url \
          -o /usr/local/bin/socat_wrapper.sh
