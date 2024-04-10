@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # 定义函数来安装socat和服务
 install_socat_service() {
     # 1. 安装socat
@@ -52,7 +50,12 @@ EOF
     sudo chmod +x /usr/local/bin/socat_wrapper.sh
 
     echo "socat_wrapper.sh has been downloaded and made executable."
+
+    # 在这里调用add_cron_job函数以添加定时任务
+    echo "Adding cron job for periodic updates..."
+    add_cron_job
 }
+
 
 
 # 定义添加定时任务的函数
