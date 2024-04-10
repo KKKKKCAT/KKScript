@@ -89,11 +89,11 @@ add_cron_job() {
     cron_command="0 2 * * * /bin/bash /usr/local/bin/update_socat_wrapper.sh"
     
     # 检查定时任务是否已存在
-    if crontab -l | grep -q "$cron_command"; then
+    if sudo crontab -l | grep -q "$cron_command"; then
         echo "定时任务已存在。"
     else
         # 添加定时任务
-        (sudo crontab -l 2>/dev/null; echo "$cron_command") | crontab -
+        (sudo crontab -l 2>/dev/null; echo "$cron_command") | sudo crontab -
         echo "定时任务已添加。"
     fi
 }
@@ -104,7 +104,7 @@ remove_cron_job() {
     cron_command="0 2 * * * /bin/bash /usr/local/bin/update_socat_wrapper.sh"
     
     # 移除定时任务
-    (sudo crontab -l | grep -v "$cron_command") | crontab -
+    (sudo sudo crontab -l | grep -v "$cron_command") | sudo crontab -
     echo "定时任务已移除。"
 }
 
