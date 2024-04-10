@@ -4,9 +4,6 @@ install_socat_service() {
     echo "正在安装socat..."
     sudo apt install socat -y
 
-    # 输入GitHub文件URL
-    read -p "Enter the GitHub URL for socat_update.sh: " github_url
-
     # 询问是否为公开仓库
     read -p "GitHub仓库是公开的吗？(y/n): " is_public
     if [[ $is_public == "n" ]]; then
@@ -18,6 +15,9 @@ install_socat_service() {
         github_token=""  # 确保这个变量在脚本中被清空
         token_header=""
     fi
+
+    # 输入GitHub文件URL
+    read -p "Enter the GitHub URL for socat_update.sh: " github_url
 
     # 2. 创建systemd服务文件
     service_file="/etc/systemd/system/socat_combined.service"
