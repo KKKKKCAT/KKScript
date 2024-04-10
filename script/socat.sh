@@ -87,17 +87,18 @@ EOF
 # 定义添加定时任务的函数
 add_cron_job() {
     # 定义定时任务命令
-    cron_command="0 2 * * * /bin/bash /usr/local/bin/update_socat_wrapper.sh"
+    cron_command="/bin/bash /usr/local/bin/update_socat_wrapper.sh"
     
-    # 检查定时任务是否已存在
-    if sudo crontab -l | grep -q "$cron_command"; then
+    # 检查定时任务是否已存在，使用 grep -F 和精确匹配整个命令
+    if sudo crontab -l | grep -Fq "$cron_command"; then
         echo "定时任务已存在。"
     else
-        # 添加定时任务
-        (sudo crontab -l 2>/dev/null; echo "$cron_command") | sudo crontab -
+        # 添加定时任务，确保只有一个实例
+        (sudo crontab -l 2>/dev/null | grep -vF "$cron_command"; echo "0 2 * * * $cron_command") | sudo crontab -
         echo "定时任务已添加。"
     fi
 }
+
 
 # 定义移除定时任务的函数
 remove_cron_job() {
