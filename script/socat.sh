@@ -81,6 +81,8 @@ EOF
     # 添加定时任务
     echo "Adding cron job for periodic updates..."
     add_cron_job
+
+    sudo systemctl start socat_combined.service
 }
 
 
@@ -147,7 +149,7 @@ case $action in
         install_socat_service
         ;;
     2)
-        sudo systemctl start socat_combined.service
+        sudo systemctl restart socat_combined.service
         ;;
     3)
         sudo systemctl stop socat_combined.service
