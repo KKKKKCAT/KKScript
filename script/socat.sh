@@ -47,15 +47,40 @@ EOF
              -o /usr/local/bin/socat_wrapper.sh
     fi
 
+    # 根据用户输入的信息创建update_socat_wrapper.sh脚本
+    echo "Creating update_socat_wrapper.sh script..."
+    update_script_path="/usr/local/bin/update_socat_wrapper.sh"
+    sudo bash -c "cat > $update_script_path" <<EOF
+#!/bin/bash
+
+# 该脚本用于定期更新socat_wrapper.sh
+echo "Updating socat_wrapper.sh from GitHub..."
+if [[ -n "$token_header" ]]; then
+    sudo curl -H "$token_header" \
+         -H 'Accept: application/vnd.github.v3.raw' \
+         -L $github_url \
+         -o /usr/local/bin/socat_wrapper.sh
+else
+    sudo curl -H 'Accept: application/vnd.github.v3.raw' \
+         -L $github_url \
+         -o /usr/local/bin/socat_wrapper.sh
+fi
+
+sudo chmod +x /usr/local/bin/socat_wrapper.sh
+
+echo "socat_wrapper.sh has been updated."
+EOF
+
+    sudo chmod +x $update_script_path
+    echo "update_socat_wrapper.sh script has been created and made executable."
+
     sudo chmod +x /usr/local/bin/socat_wrapper.sh
-
     echo "socat_wrapper.sh has been downloaded and made executable."
-
-    # 在这里调用add_cron_job函数以添加定时任务
+    
+    # 添加定时任务
     echo "Adding cron job for periodic updates..."
     add_cron_job
 }
-
 
 
 # 定义添加定时任务的函数
