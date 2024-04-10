@@ -119,6 +119,8 @@ remove_socat_service() {
     sudo rm /etc/systemd/system/socat_combined.service
     sudo systemctl daemon-reload
     sudo systemctl reset-failed
+    sudo rm /usr/local/bin/update_socat_wrapper.sh
+    sudo rm /usr/local/bin/socat_wrapper.sh
     echo "socat服务已移除。"
 }
 
