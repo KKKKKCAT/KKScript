@@ -103,12 +103,13 @@ add_cron_job() {
 # 定义移除定时任务的函数
 remove_cron_job() {
     # 定义定时任务命令
-    cron_command="0 2 * * * /bin/bash /usr/local/bin/update_socat_wrapper.sh"
+    cron_command="/bin/bash /usr/local/bin/update_socat_wrapper.sh"
     
-    # 移除定时任务
-    (sudo sudo crontab -l | grep -v "$cron_command") | sudo crontab -
+    # 移除定时任务，确保匹配整行
+    (sudo crontab -l | grep -vF "$cron_command") | sudo crontab -
     echo "定时任务已移除。"
 }
+
 
 # 定义移除功能
 remove_socat_service() {
