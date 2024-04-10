@@ -114,15 +114,20 @@ remove_cron_job() {
 # 定义移除功能
 remove_socat_service() {
     echo "正在移除socat服务..."
-    remove_cron_job
     sudo systemctl stop socat_combined.service
     sudo systemctl disable socat_combined.service
     sudo rm /etc/systemd/system/socat_combined.service
     sudo systemctl daemon-reload
     sudo systemctl reset-failed
+    
+    # 移除更新脚本和socat_wrapper脚本
     sudo rm /usr/local/bin/update_socat_wrapper.sh
     sudo rm /usr/local/bin/socat_wrapper.sh
-    echo "socat服务已移除。"
+    
+    # 调用移除定时任务的函数
+    remove_cron_job
+    
+    echo "socat服务和相关定时任务已移除。"
 }
 
 # 更新主菜单
