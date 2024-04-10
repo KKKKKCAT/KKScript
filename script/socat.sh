@@ -114,6 +114,7 @@ remove_cron_job() {
 # 定义移除功能
 remove_socat_service() {
     echo "正在移除socat服务..."
+    remove_cron_job
     sudo systemctl stop socat_combined.service
     sudo systemctl disable socat_combined.service
     sudo rm /etc/systemd/system/socat_combined.service
