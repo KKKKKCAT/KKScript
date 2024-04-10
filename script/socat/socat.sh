@@ -141,11 +141,11 @@ remove_socat_service() {
 
 # 更新主菜单
 echo "#############################################################"
-echo -e "#                  ${RED}Socat 一键安装脚本${PLAIN}                  #"
-echo -e "# ${GREEN}作者${PLAIN}: KKKKKCAT                                  #"
-echo -e "# ${GREEN}博客${PLAIN}: ${GREEN}https://kkcat.blog${PLAIN}                            #"
-echo -e "# ${GREEN}GitHub 项目${PLAIN}: ${GREEN}https://github.com/KKKKKCAT/KKScript/tree/main/script/socat${PLAIN}               #"
-echo -e "# ${GREEN}Telegram 频道${PLAIN}: ${GREEN}https://t.me/kkkkkcat${PLAIN}              #"
+echo -e "#                  ${RED}Socat 一键安装脚本${PLAIN}                       #"
+echo -e "# ${GREEN}作者${PLAIN}: KKKKKCAT                                            #"
+echo -e "# ${GREEN}博客${PLAIN}: ${GREEN}https://kkcat.blog${PLAIN}                                  #"
+echo -e "# ${GREEN}GitHub 项目${PLAIN}: ${GREEN}https://github.com/KKKKKCAT/KKScript/tree/main/script/socat${PLAIN}"
+echo -e "# ${GREEN}Telegram 频道${PLAIN}: ${GREEN}https://t.me/kkkkkcat${PLAIN}                      #"
 echo "#############################################################"
 
 echo -e "${GREEN}请选择操作：${PLAIN}"
