@@ -70,7 +70,9 @@ EOF
     echo "Adding cron job for periodic updates..."
     add_cron_job
 
+    sudo systemctl daemon-reload
     sudo systemctl start socat_combined.service
+    
 }
 
 download_wrapper() {
