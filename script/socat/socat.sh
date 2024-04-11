@@ -108,6 +108,8 @@ remove_socat_service() {
 
     unset GITHUB_TOKEN
     unset GITHUB_URL
+
+    sudo systemctl daemon-reload
     
     echo "socat服務和相關定時任務已移除。"
 }
