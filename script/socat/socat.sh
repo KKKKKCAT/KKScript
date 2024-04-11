@@ -132,7 +132,7 @@ remove_cron_job() {
     # 定義 update_socat_wrapper.sh 腳本的完整路徑
     local update_script_path="$script_dir/socat.sh"
 
-    # 定義定時任務命令，使用 update_socat_wrapper.sh 腳本的完整路徑
+    # 定義定時任務命令，使用 socat.sh 腳本的完整路徑
     cron_command="/bin/bash $update_script_path"
 
     # 移除定時任務，確保匹配整行
@@ -156,7 +156,6 @@ remove_socat_service() {
     sudo systemctl reset-failed
     
     # 移除更新腳本和socat_wrapper腳本
-    sudo rm /usr/local/bin/update_socat_wrapper.sh
     sudo rm /usr/local/bin/socat_wrapper.sh
 
     unset GITHUB_TOKEN
