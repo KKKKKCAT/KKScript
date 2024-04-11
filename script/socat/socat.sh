@@ -11,6 +11,9 @@ install_socat_service() {
     echo "正在安装socat..."
     sudo apt install socat -y
 
+    github_token="$GITHUB_TOKEN"
+    github_url="$GITHUB_URL"
+
     # 詢問是否為公開倉庫
     read -p "GitHub倉庫是公開的嗎？(y/n): " is_public
     if [[ $is_public == "n" ]]; then
