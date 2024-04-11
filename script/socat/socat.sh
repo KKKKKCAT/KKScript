@@ -184,4 +184,4 @@ else
     execute_task $1
 fi
 
-execute_task $action
+
