@@ -76,9 +76,13 @@ EOF
 }
 
 download_wrapper() {
-    local url="$1"
-    local token="$2"
-    local token_header=""
+    # 如果GITHUB_URL環境變量已設置，則使用它；否則，請求用戶輸入
+    if [[ -z "$GITHUB_URL" ]]; then
+        read -p "Enter the GitHub URL for socat_update.sh: " github_url
+    else
+        github_url="$GITHUB_URL"
+        echo "Using GitHub URL from environment variable: $GITHUB_URL"
+    fi
     
     echo "Downloading socat_wrapper.sh from GitHub..."
     if [[ -n $token ]]; then
@@ -163,7 +167,7 @@ case $action in
         remove_socat_service
         ;;
     7)
-        download_wrapper "$github_url" "$github_token"
+        download_wrapper
         ;;
     *)
         echo -e "${RED}无效输入...${PLAIN}"
