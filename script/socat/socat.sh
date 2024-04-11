@@ -128,51 +128,58 @@ remove_socat_service() {
     echo "socat服務和相關定時任務已移除。"
 }
 
-# 更新主菜單
-echo "#############################################################"
-echo -e ""
-echo -e "                   ${RED}Socat 一鍵安裝腳本${PLAIN}"
-echo -e "  ${GREEN}作者${PLAIN}: ${YELLOW}KKKKKCAT${PLAIN}"
-echo -e "  ${GREEN}博客${PLAIN}: ${YELLOW}https://kkcat.blog${PLAIN}"
-echo -e "  ${GREEN}GitHub 項目${PLAIN}: ${YELLOW}https://github.com/KKKKKCAT/KKScript/tree/main/script/socat${PLAIN}"
-echo -e "  ${GREEN}Telegram 頻道${PLAIN}: ${YELLOW}https://t.me/kkkkkcat${PLAIN}"
-echo -e ""
-echo "#############################################################"
-echo -e ""
+execute_task() {
+    case $1 in
+        1)
+            install_socat_service
+            ;;
+        2)
+            sudo systemctl restart socat_combined.service
+            ;;
+        3)
+            sudo systemctl stop socat_combined.service
+            ;;
+        4)
+            sudo systemctl enable socat_combined.service
+            ;;
+        5)
+            sudo systemctl status socat_combined.service
+            ;;
+        6)
+            remove_socat_service
+            ;;
+        7)
+            download_wrapper
+            ;;
+        *)
+            echo -e "${RED}無效輸入...${PLAIN}"
+            ;;
+    esac
+}
 
-echo -e "${GREEN}請選擇操作：${PLAIN}"
-echo "1) 安裝socat服務"
-echo "2) 啓動socat服務"
-echo "3) 停止socat服務"
-echo "4) 設置開機自啓socat服務"
-echo "5) 檢查socat服務狀態"
-echo -e "6) ${RED}移除socat服務${PLAIN}"
-echo "7) 下載並更新socat_wrapper.sh"
-read -p "輸入選擇（1-7）: " action
-
-case $action in
-    1)
-        install_socat_service
-        ;;
-    2)
-        sudo systemctl restart socat_combined.service
-        ;;
-    3)
-        sudo systemctl stop socat_combined.service
-        ;;
-    4)
-        sudo systemctl enable socat_combined.service
-        ;;
-    5)
-        sudo systemctl status socat_combined.service
-        ;;
-    6)
-        remove_socat_service
-        ;;
-    7)
-        download_wrapper
-        ;;
-    *)
-        echo -e "${RED}無效輸入...${PLAIN}"
-        ;;
-esac
+if [[ $# -eq 0 ]]; then
+    # 更新主菜單
+    echo "#############################################################"
+    echo -e ""
+    echo -e "                   ${RED}Socat 一鍵安裝腳本${PLAIN}"
+    echo -e "  ${GREEN}作者${PLAIN}: ${YELLOW}KKKKKCAT${PLAIN}"
+    echo -e "  ${GREEN}博客${PLAIN}: ${YELLOW}https://kkcat.blog${PLAIN}"
+    echo -e "  ${GREEN}GitHub 項目${PLAIN}: ${YELLOW}https://github.com/KKKKKCAT/KKScript/tree/main/script/socat${PLAIN}"
+    echo -e "  ${GREEN}Telegram 頻道${PLAIN}: ${YELLOW}https://t.me/kkkkkcat${PLAIN}"
+    echo -e ""
+    echo "#############################################################"
+    echo -e ""
+    
+    echo -e "${GREEN}請選擇操作：${PLAIN}"
+    echo "1) 安裝socat服務"
+    echo "2) 啓動socat服務"
+    echo "3) 停止socat服務"
+    echo "4) 設置開機自啓socat服務"
+    echo "5) 檢查socat服務狀態"
+    echo -e "6) ${RED}移除socat服務${PLAIN}"
+    echo "7) 下載並更新socat_wrapper.sh"
+    read -p "輸入選擇（1-7）: " action
+    execute_task $action
+else
+    execute_task $1
+fi
