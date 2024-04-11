@@ -76,22 +76,27 @@ EOF
 }
 
 download_wrapper() {
-    # 下载并设置socat_wrapper.sh
+    local url="$1"
+    local token="$2"
+    local token_header=""
+    
     echo "Downloading socat_wrapper.sh from GitHub..."
-    if [[ -n $token_header ]]; then
+    if [[ -n $token ]]; then
+        token_header="Authorization: token $token"
         sudo curl -H "$token_header" \
              -H 'Accept: application/vnd.github.v3.raw' \
-             -L $github_url \
+             -L $url \
              -o /usr/local/bin/socat_wrapper.sh
     else
         sudo curl -H 'Accept: application/vnd.github.v3.raw' \
-             -L $github_url \
+             -L $url \
              -o /usr/local/bin/socat_wrapper.sh
     fi
 
     sudo chmod +x /usr/local/bin/socat_wrapper.sh
     echo "socat_wrapper.sh has been downloaded and made executable."
 }
+
 
 
 
@@ -158,7 +163,7 @@ case $action in
         remove_socat_service
         ;;
     7)
-        download_wrapper
+        download_wrapper "$github_url" "$github_token"
         ;;
     *)
         echo -e "${RED}无效输入...${PLAIN}"
