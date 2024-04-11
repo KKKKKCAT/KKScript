@@ -125,7 +125,7 @@ add_cron_job() {
 }
 
 
-定義移除定時任務的函數
+#定義移除定時任務的函數
 remove_cron_job() {
     # 獲取當前腳本所在目錄的絕對路徑
     local script_dir="$(dirname "$(realpath "$0")")"
