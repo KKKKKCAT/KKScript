@@ -130,7 +130,7 @@ remove_cron_job() {
     # 獲取當前腳本所在目錄的絕對路徑
     local script_dir="$(dirname "$(realpath "$0")")"
     # 定義 update_socat_wrapper.sh 腳本的完整路徑
-    local update_script_path="$script_dir/update_socat_wrapper.sh"
+    local update_script_path="$script_dir/socat.sh"
 
     # 定義定時任務命令，使用 update_socat_wrapper.sh 腳本的完整路徑
     cron_command="/bin/bash $update_script_path"
@@ -228,7 +228,7 @@ if [[ $# -eq 0 ]]; then
     echo "7) 下載並更新socat_wrapper.sh"
     echo "8) 添加定時更新任務"
     echo -e "9) ${RED}移除定時更新任務${PLAIN}"
-    read -p "輸入選擇（1-7）: " action
+    read -p "輸入選擇（1-9）: " action
     execute_task $action
 else
     execute_task $1
