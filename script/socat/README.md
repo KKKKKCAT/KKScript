@@ -4,20 +4,38 @@ Socat 是一個在 Linux 系統上運行的多功能命令行工具，它的名�
 
 ![](https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/socat/socat1.jpg)
 
-### 安裝
-```
-wget https://github.com/KKKKKCAT/KKScript/raw/main/script/socat/socat.sh && bash socat.sh
-```
 
-### 用法
+
+## 用法
 
 安裝時需要準備 ```socat_wrapper.sh```，使用了公開Github鏈結和私有Github倉庫模式，如果使用私有Github倉庫請預先準備 "Personal access token" (Settings/Developer Settings)，並開啟 "repo Full control of private repositories"
 
-範本：
+```socat_wrapper.sh``` 範本：
 ```
 https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/socat/socat_wrapper.sh
 ```
 
+### 1. 私有倉庫模式
+```
+export GITHUB_TOKEN=您的token
+export GITHUB_URL=您的倉庫URL (https://api.github.com/repos/KKKKKCAT/KKScript/contents/script/socat/socat_wrapper.sh)
+
+source ~/.bashrc
+```
+
+### 1. 公開倉庫/連結模式
+```
+export GITHUB_URL=您的倉庫URL (https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/socat/socat_wrapper.sh)
+
+source ~/.bashrc
+```
+
+### 2. 安裝
+```
+wget https://github.com/KKKKKCAT/KKScript/raw/main/script/socat/socat.sh && bash socat.sh
+```
+
+### 命令：
 ```
 安裝socat服務: 安裝 Socat 並建立 systemd 服務。
 啟動socat服務: 啟動 Socat 服務。
