@@ -163,6 +163,9 @@ remove_socat_service() {
     unset GITHUB_URL
 
     sudo systemctl daemon-reload
+
+    # 調用移除定時任務的函數
+    remove_cron_job
     
     echo "socat服務和相關定時任務已移除。"
 }
