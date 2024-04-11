@@ -76,32 +76,35 @@ EOF
 }
 
 download_wrapper() {
-    # 如果GITHUB_URL環境變量已設置，則使用它；否則，請求用戶輸入
+    local github_url
+    local token_header=""
+
     if [[ -z "$GITHUB_URL" ]]; then
         read -p "Enter the GitHub URL for socat_update.sh: " github_url
     else
         github_url="$GITHUB_URL"
         echo "Using GitHub URL from environment variable: $GITHUB_URL"
     fi
-    
+
+    if [[ -n "$GITHUB_TOKEN" ]]; then
+        token_header="Authorization: token $GITHUB_TOKEN"
+    fi
+
     echo "Downloading socat_wrapper.sh from GitHub..."
-    if [[ -n $token ]]; then
-        token_header="Authorization: token $token"
+    if [[ -n $token_header ]]; then
         sudo curl -H "$token_header" \
              -H 'Accept: application/vnd.github.v3.raw' \
-             -L $url \
+             -L "$github_url" \
              -o /usr/local/bin/socat_wrapper.sh
     else
         sudo curl -H 'Accept: application/vnd.github.v3.raw' \
-             -L $url \
+             -L "$github_url" \
              -o /usr/local/bin/socat_wrapper.sh
     fi
 
     sudo chmod +x /usr/local/bin/socat_wrapper.sh
     echo "socat_wrapper.sh has been downloaded and made executable."
 }
-
-
 
 
 # 定義移除功能
@@ -170,6 +173,6 @@ case $action in
         download_wrapper
         ;;
     *)
-        echo -e "${RED}无效输入...${PLAIN}"
+        echo -e "${RED}無效輸入...${PLAIN}"
         ;;
 esac
