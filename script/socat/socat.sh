@@ -183,3 +183,5 @@ if [[ $# -eq 0 ]]; then
 else
     execute_task $1
 fi
+
+execute_task $action
