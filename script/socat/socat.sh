@@ -106,6 +106,45 @@ download_wrapper() {
     echo "socat_wrapper.sh has been downloaded and made executable."
 }
 
+#定義添加定時任務的函數
+add_cron_job() {
+    # 獲取當前腳本的絕對路徑
+    local script_path="$(realpath "$0")"
+
+    # 定義定時任務命令，使用獲取到的腳本路徑
+    cron_command="/bin/bash $script_path 7"
+
+    # 檢查定時任務是否已存在，使用 grep -F 和精確匹配整個命令
+    if sudo crontab -l | grep -Fq -- "$cron_command"; then
+        echo "定時任務已存在。"
+    else
+        # 添加定時任務，確保只有一個實例
+        (sudo crontab -l 2>/dev/null | grep -vF -- "$cron_command"; echo "0 2 * * * $cron_command") | sudo crontab -
+        echo "定時任務已添加。"
+    fi
+}
+
+
+定義移除定時任務的函數
+remove_cron_job() {
+    # 獲取當前腳本所在目錄的絕對路徑
+    local script_dir="$(dirname "$(realpath "$0")")"
+    # 定義 update_socat_wrapper.sh 腳本的完整路徑
+    local update_script_path="$script_dir/update_socat_wrapper.sh"
+
+    # 定義定時任務命令，使用 update_socat_wrapper.sh 腳本的完整路徑
+    cron_command="/bin/bash $update_script_path"
+
+    # 移除定時任務，確保匹配整行
+    if sudo crontab -l | grep -Fq -- "$cron_command"; then
+        (sudo crontab -l | grep -vF -- "$cron_command") | sudo crontab -
+        echo "定時任務已移除。"
+    else
+        echo "未找到指定的定時任務。"
+    fi
+}
+
+
 
 # 定義移除功能
 remove_socat_service() {
@@ -151,6 +190,12 @@ execute_task() {
         7)
             download_wrapper
             ;;
+        8)
+            add_cron_job
+            ;;
+        9)
+            remove_cron_job
+            ;;
         *)
             echo -e "${RED}無效輸入...${PLAIN}"
             ;;
@@ -178,6 +223,8 @@ if [[ $# -eq 0 ]]; then
     echo "5) 檢查socat服務狀態"
     echo -e "6) ${RED}移除socat服務${PLAIN}"
     echo "7) 下載並更新socat_wrapper.sh"
+    echo "8) 添加定時更新任務"
+    echo -e "9) ${RED}移除定時更新任務${PLAIN}"
     read -p "輸入選擇（1-7）: " action
     execute_task $action
 else
