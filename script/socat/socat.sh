@@ -208,7 +208,7 @@ if [[ $# -eq 0 ]]; then
     # 更新主菜單
     echo "#############################################################"
     echo -e ""
-    echo -e "                   ${RED}Socat 一鍵安裝腳本${PLAIN}"
+    echo -e "                   ${RED}Socat 一鍵安裝腳本 (11/04/2024更新) ${PLAIN}"
     echo -e "  ${GREEN}作者${PLAIN}: ${YELLOW}KKKKKCAT${PLAIN}"
     echo -e "  ${GREEN}博客${PLAIN}: ${YELLOW}https://kkcat.blog${PLAIN}"
     echo -e "  ${GREEN}GitHub 項目${PLAIN}: ${YELLOW}https://github.com/KKKKKCAT/KKScript/tree/main/script/socat${PLAIN}"
