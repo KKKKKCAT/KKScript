@@ -103,6 +103,8 @@ download_wrapper() {
     fi
 
     sudo chmod +x /usr/local/bin/socat_wrapper.sh
+    sudo systemctl daemon-reload
+    sudo systemctl restart socat_combined.service
     echo "socat_wrapper.sh has been downloaded and made executable."
 }
 
@@ -112,7 +114,7 @@ add_cron_job() {
     local script_path="$(realpath "$0")"
 
     # 定義定時任務命令，使用獲取到的腳本路徑
-    cron_command="/bin/bash $script_path 7 && sudo systemctl daemon-reload"
+    cron_command="/bin/bash $script_path 7"
 
     # 檢查定時任務是否已存在，使用 grep -F 和精確匹配整個命令
     if sudo crontab -l | grep -Fq -- "$cron_command"; then
