@@ -16,7 +16,7 @@ https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/socat/socat_wrap
 ```
 
 ### 1. 私有倉庫模式
-```nano ~/.bashrc```
+```nano ~/.bashrc``` 加以下2句export字句，更換你的token和URL
 
 ```
 export GITHUB_TOKEN=您的token
