@@ -16,17 +16,23 @@ https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/socat/socat_wrap
 ```
 
 ### 1. 私有倉庫模式
+```nano ~/.bashrc```
+
 ```
 export GITHUB_TOKEN=您的token
 export GITHUB_URL=您的倉庫URL (https://api.github.com/repos/KKKKKCAT/KKScript/contents/script/socat/socat_wrapper.sh)
+```
 
+```
 source ~/.bashrc
 ```
 
 ### 1. 公開倉庫/連結模式
+```nano ~/.bashrc```
 ```
 export GITHUB_URL=您的倉庫URL (https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/socat/socat_wrapper.sh)
-
+```
+```
 source ~/.bashrc
 ```
 
