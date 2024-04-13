@@ -112,7 +112,7 @@ add_cron_job() {
     local script_path="$(realpath "$0")"
 
     # 定義定時任務命令，使用獲取到的腳本路徑
-    cron_command="/bin/bash $script_path 7"
+    cron_command="/bin/bash $script_path 7 && sudo systemctl daemon-reload"
 
     # 檢查定時任務是否已存在，使用 grep -F 和精確匹配整個命令
     if sudo crontab -l | grep -Fq -- "$cron_command"; then
