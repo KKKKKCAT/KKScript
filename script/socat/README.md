@@ -1,10 +1,10 @@
-# KKScript - Socat一鍵管理腳本 （11/04/2024 更新)
+# KKScript - Socat一鍵管理腳本 （14/04/2024 更新)
 
 Socat 是一個在 Linux 系統上運行的多功能命令行工具，它的名字是"SOcket CAT"的縮寫。Socat 主要用於在兩個連接點之間建立雙向通信，並且支援多種不同的通信協議，包括 TCP、UDP、IPv4、IPv6、SSL、TLS、PROXY 等等。它的功能非常強大，可以幫助用戶在系統間進行數據傳輸、端口轉發、加密通信等。
 
 ![](https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/socat/socat1.jpg)
 
-
+- 2024/04/14更新：发现重开机后用 export GITHUB_URL=您的仓库URL 会消失，更新了直接写入到 ```~/.bashrc```文档，那重开机这个 GITHUB_URL 仍会存在
 
 ## 用法
 
