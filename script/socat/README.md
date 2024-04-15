@@ -4,7 +4,7 @@ Socat 是一個在 Linux 系統上運行的多功能命令行工具，它的名�
 
 ![](https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/socat/socat1.jpg)
 
-- 2024/04/14更新：发现重开机后用 export GITHUB_URL=您的仓库URL 会消失，更新了直接写入到 ```~/.bashrc```文档，那重开机这个 GITHUB_URL 仍会存在
+- 2024/04/14更新：發現重開機後用 export GITHUB_URL=您的倉庫URL 會消失，更新了直接寫入到 ```~/.bashrc```文檔，那重開機這個 GITHUB_URL 仍會存在
 
 ## 用法
 
