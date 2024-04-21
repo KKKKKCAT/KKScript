@@ -71,6 +71,7 @@ EOF
     add_cron_job
 
     sudo systemctl daemon-reload
+    sudo systemctl enable socat_combined.service
     sudo systemctl start socat_combined.service
     
 }
