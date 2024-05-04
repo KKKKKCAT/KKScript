@@ -19,3 +19,35 @@
 1. **一鍵腳本**
    ```bash
    wget https://github.com/KKKKKCAT/KKScript/raw/main/script/socat/dnsmasq-install.sh && bash dns.sh
+
+## 腳本選項
+
+當運行腳本後，將出現以下選項：
+
+- `1`：安裝 Dnsmasq
+- `2`：配置 Dnsmasq
+- `3`：啟動 Dnsmasq
+- `4`：停止 Dnsmasq
+- `5`：重啟 Dnsmasq
+- `6`：卸載 Dnsmasq
+
+## 例子
+
+**安裝 Dnsmasq**
+
+選擇 `1` 會自動更新系統包列表，安裝 Dnsmasq，並配置默認的 DNS 解析文件。
+
+**配置 Dnsmasq**
+
+選擇 `2` 後，根據提示輸入所需配置的 DNS 區域和 IP 地址。支持的區域包括台灣、日本、香港、Disney+/Netflix 和 ChatGPT。
+
+## 維護者
+
+- **KKKKKCAT**
+  - 博客：[https://kkcat.blog](https://kkcat.blog)
+  - GitHub：[https://github.com/KKKKKCAT/KKScript/tree/main/script/dnsmasq](https://github.com/KKKKKCAT/KKScript/tree/main/script/dnsmasq)
+  - Telegram：[https://t.me/kkkkkcat](https://t.me/kkkkkcat)
+
+## 版本歷史
+
+- v1.0.0 (04/05/2024)：初始發布版本。
