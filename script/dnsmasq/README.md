@@ -16,9 +16,14 @@
 
 ## 安裝和使用
 
-1. **一鍵腳本**
+1. **安裝dnsmasq**
+   ```bash
+   apt install dnsmasq
+
+3. **一鍵腳本**
    ```bash
    wget https://github.com/KKKKKCAT/KKScript/raw/main/script/socat/dnsmasq-install.sh && bash dns.sh
+
 
 ## 腳本選項
 
