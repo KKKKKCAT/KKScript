@@ -26,7 +26,7 @@
 
 3. **一鍵腳本**
    ```bash
-   wget https://github.com/KKKKKCAT/KKScript/raw/main/script/socat/dnsmasq-install.sh && bash dns.sh
+   wget https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/dnsmasq/dns.sh && bash dns.sh
 
 
 ## 腳本選項
