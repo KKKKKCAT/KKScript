@@ -114,7 +114,6 @@ abema.adx.promo
 hayabusa.media
 
 vod-playout-abematv.akamaized.net
-api-abematv.bucketeer.jp
 
 
 dmc.nico
