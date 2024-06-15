@@ -114,6 +114,7 @@ abema.adx.promo
 hayabusa.media
 
 vod-playout-abematv.akamaized.net
+streaming-api-cf.p-c2-x.abema-tv.com
 
 
 dmc.nico
