@@ -105,7 +105,6 @@ ds-linear-abematv.akamaized.net
 linear-abematv.akamaized.net
 ds-vod-abematv.akamaized.net
 vod-abematv.akamaized.net
-vod-playout-abematv.akamaized.net
 ameba.jp
 hayabusa.io
 mobile-collector.newrelic.com
@@ -113,6 +112,9 @@ vod-abematv.akamaized.net
 bucketeer.jp
 abema.adx.promo
 hayabusa.media
+
+vod-playout-abematv.akamaized.net
+api-abematv.bucketeer.jp
 
 
 dmc.nico
