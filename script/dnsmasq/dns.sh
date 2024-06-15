@@ -316,7 +316,7 @@ NC='\033[0m' # No Color
 show_info() {
     # echo -e "${On_ICyan}                                                      ${NC}"
     echo -e ""
-    echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.0 (04/05/2024更新) ${NC}"
+    echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.1 (15/06/2024更新) ${NC}"
     echo -e ""
     echo -e "  ${BIGreen}作者${NC}: ${BIYellow}KKKKKCAT${NC}"
     echo -e "  ${BIGreen}博客${NC}: ${BIYellow}https://kkcat.blog${NC}"
