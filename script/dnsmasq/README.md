@@ -60,4 +60,4 @@
 ## 版本歷史
 
 - v1.0.0 (04/05/2024)：初始發布版本。
-- v1.0.1 (15/06/2024)：Abema解鎖新加了"vod-playout-abematv.akamaized.net" 不然有些直播或影片會看不到
+- v1.0.1 (15/06/2024)：Abema解鎖新加了"vod-playout-abematv.akamaized.net" & "live-playout-abematv.akamaized.net" 不然有些直播或影片會看不到
