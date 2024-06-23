@@ -1,6 +1,3 @@
-
-
-```
 #!/bin/bash
 
 # 定義版本號
@@ -34,4 +31,4 @@ echo "DDNS-Go 已安裝並設置為系統服務。"
 echo "配置文件默認路徑為：/root/.ddns_go_config.yaml"
 echo "使用命令進行服務管理："
 echo "ddns-go -s (install|uninstall|restart)"
-```
+
