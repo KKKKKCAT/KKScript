@@ -317,7 +317,7 @@ NC='\033[0m' # No Color
 show_info() {
     # echo -e "${On_ICyan}                                                      ${NC}"
     echo -e ""
-    echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.1 (15/06/2024更新) ${NC}"
+    echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.2 (29/06/2024更新) ${NC}"
     echo -e ""
     echo -e "  ${BIGreen}作者${NC}: ${BIYellow}KKKKKCAT${NC}"
     echo -e "  ${BIGreen}博客${NC}: ${BIYellow}https://kkcat.blog${NC}"
@@ -375,6 +375,10 @@ case $action in
         echo "正在安裝 dnsmasq..."
         apt-get update && apt-get -y install dnsmasq
         echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" > /etc/resolv.dnsmasq.conf
+
+        sudo rm /etc/resolv.conf
+        sudo touch /etc/resolv.conf
+        
         echo -e "nameserver 127.0.0.1\nnameserver 1.1.1.1" > /etc/resolv.conf
         chattr +i /etc/resolv.conf
         ;;
