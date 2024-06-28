@@ -5,7 +5,6 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-
 declare -A dns_domains
 dns_domains["TW"]="
 gamer.com.tw
@@ -18,29 +17,23 @@ viblast.com
 gamer-cds.cdn.hinet.net
 gamer2-cds.cdn.hinet.net
 
-
 kktv.com.tw
 kktv.me
 kk.stream
 
-
 myvideo.net.tw
-
 
 chocotv.com.tw
 line-cdn.net
 line-scdn.net
 linetv.tw
 
-
 litv.tv
 LiTV.tv
 cdn.hinet.net
 
-
 4gtv.tv
 cdn.hinet.net
-
 
 dcard.tw
 elaott.tv
@@ -51,16 +44,13 @@ com.tw
 org.tw
 org.tw
 
-
 ofiii.com
 ofifreepc.akamaized.net
-
 
 catchplay.com.tw
 catchplay.com
 cloudfront.net
 akamaized.net
-
 
 biliapi.com
 biliapi.net
@@ -86,7 +76,6 @@ logx.optimizely.com
 s.yimg.jp
 sentry.io
 
-
 dmm.com
 dmm.co.jp
 dmm-extension.com
@@ -96,7 +85,6 @@ p-smith.com
 vmdash-cenc.akamaized.net
 img.vm-movie.jp
 bam.nr-data.net
-
 
 abema.io
 abema.tv
@@ -117,25 +105,20 @@ vod-playout-abematv.akamaized.net
 live-playout-abematv.akamaized.net
 streaming-api-cf.p-c2-x.abema-tv.com
 
-
 dmc.nico
 nicovideo.jp
 nimg.jp
 socdm.com
-
 
 telasa.jp
 kddi-video.com
 videopass.jp
 d2lmsumy47c8as.cloudfront.net
 
-
 paravi.jp
-
 
 unext.jp
 nxtv.jp
-
 
 hulu.com
 huluad.com
@@ -160,26 +143,20 @@ doubleclick.net
 usergram.info
 hjholdings.tv
 
-
 tver.jp
 edge.api.brightcove.com
 players.brightcove.net
 
-
 wowow.co.jp
-
 
 fujitv.co.jp
 stream.ne.jp
-
 
 radiko.jp
 radionikkei.jp
 smartstream.ne.jp
 
-
 clubdam.com
-
 
 cygames.jp
 konosubafd.jp
@@ -187,18 +164,13 @@ colorfulpalette.org
 cds1.clubdam.com
 api.worldflipper.jp
 
-
 music-book.jp
 overseaauth.music-book.jp
 
-
 gyao.yahoo.co.jp
-
 
 id.zaq.ne.jp
 "
-
-
 
 dns_domains["HK"]="
 nowe.com
@@ -226,11 +198,8 @@ tvbweekly.com
 tvmedia.net.au
 videos-f.jwpsrv.com
 
-
 hoy.tv
 "
-
-
 
 dns_domains["Disney_Netflix"]="
 e13252.dscg.akamaiedge.net
@@ -299,23 +268,22 @@ On_White="\033[47m"
 IGreen="\033[0;92m"
 
 # Bold High Intensity
-BIBlack="\033[1;90m"      # Black
-BIRed="\033[1;91m"        # Red
-BIGreen="\033[1;92m"      # Green
-BIYellow="\033[1;93m"     # Yellow
-BIBlue="\033[1;94m"       # Blue
-BIPurple="\033[1;95m"     # Purple
-BICyan="\033[1;96m"       # Cyan
-BIWhite="\033[1;97m"      # White
+BIBlack="\033[1;90m"
+BIRed="\033[1;91m"
+BIGreen="\033[1;92m"
+BIYellow="\033[1;93m"
+BIBlue="\033[1;94m"
+BIPurple="\033[1;95m"
+BICyan="\033[1;96m"
+BIWhite="\033[1;97m"
 
-On_ICyan="\033[0;106m"    # Cyan
+On_ICyan="\033[0;106m"
 On_IWhite="\033[0;107m"
 On_IRed="\033[0;101m" 
 
 NC='\033[0m' # No Color
 
 show_info() {
-    # echo -e "${On_ICyan}                                                      ${NC}"
     echo -e ""
     echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.2 (29/06/2024更新) ${NC}"
     echo -e ""
@@ -366,12 +334,9 @@ echo -e "${BIYellow}5.${NC} ${IGreen}重啟 dnsmasq${NC}"
 echo -e "${BIRed}6.${NC} ${On_IRed}卸載 dnsmasq${NC}"
 read -p "輸入選擇（例如：1）: " action
 
-
-
-
 case $action in
     1)
-        # 安装 dnsmasq
+        # 安裝 dnsmasq
         echo "正在安裝 dnsmasq..."
         apt-get update && apt-get -y install dnsmasq
         echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" > /etc/resolv.dnsmasq.conf
@@ -379,8 +344,12 @@ case $action in
         sudo rm /etc/resolv.conf
         sudo touch /etc/resolv.conf
         
-        echo -e "nameserver 127.0.0.1\nnameserver 1.1.1.1" > /etc/resolv.conf
+        sudo bash -c 'echo -e "nameserver 127.0.0.1\nnameserver 1.1.1.1" > /etc/resolv.conf'
         chattr +i /etc/resolv.conf
+
+        systemctl unmask dnsmasq
+        systemctl enable dnsmasq
+        systemctl start dnsmasq
         ;;
     2)
         # 配置 dnsmasq
@@ -435,7 +404,7 @@ case $action in
             echo -e "$config_content" >> /etc/dnsmasq.conf
 
             echo "正在重啟 dnsmasq..."
-            /etc/init.d/dnsmasq restart
+            systemctl restart dnsmasq
         else
             echo "所有與所選區域相關的 DNS 設置已刪除，未添加新配置。"
         fi
@@ -443,30 +412,33 @@ case $action in
     3)
         # 啟動 dnsmasq
         echo "正在啟動 dnsmasq..."
-        /etc/init.d/dnsmasq start
+        systemctl start dnsmasq
         ;;
     4)
         # 停止 dnsmasq
         echo "正在停止 dnsmasq..."
-        /etc/init.d/dnsmasq stop
+        systemctl stop dnsmasq
         ;;
     5)
         # 重啟 dnsmasq
         echo "正在重啟 dnsmasq..."
-        /etc/init.d/dnsmasq restart
+        systemctl restart dnsmasq
         ;;
     6)
         # 卸載 dnsmasq
         echo "正在卸載 dnsmasq..."
         chattr -i /etc/resolv.conf
-        /etc/init.d/dnsmasq stop
+        systemctl stop dnsmasq
         apt-get remove -y dnsmasq
         rm /etc/resolv.dnsmasq.conf
         rm /etc/dnsmasq.conf
-        echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" > /etc/resolv.conf
+        sudo rm /etc/resolv.conf
+        sudo touch /etc/resolv.conf
+        sudo bash -c 'echo -e "nameserver 8.8.8.8\nnameserver 1.1.1.1" > /etc/resolv.conf'
         ;;
     *)
         echo -e "${BIRed}沒有輸入選擇，操作已取消。${NC}"
         exit 1
         ;;
 esac
+
