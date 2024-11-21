@@ -17,6 +17,9 @@ viblast.com
 gamer-cds.cdn.hinet.net
 gamer2-cds.cdn.hinet.net
 
+hamivideo.hinet.net
+scc.ott.hinet.net
+
 kktv.com.tw
 kktv.me
 kk.stream
@@ -33,7 +36,6 @@ LiTV.tv
 cdn.hinet.net
 
 4gtv.tv
-cdn.hinet.net
 
 dcard.tw
 elaott.tv
