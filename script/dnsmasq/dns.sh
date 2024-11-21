@@ -287,7 +287,7 @@ NC='\033[0m' # No Color
 
 show_info() {
     echo -e ""
-    echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.2 (29/06/2024更新) ${NC}"
+    echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.3 (21/11/2024更新) ${NC}"
     echo -e ""
     echo -e "  ${BIGreen}作者${NC}: ${BIYellow}KKKKKCAT${NC}"
     echo -e "  ${BIGreen}博客${NC}: ${BIYellow}https://kkcat.blog${NC}"
