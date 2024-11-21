@@ -57,6 +57,8 @@ biliapi.net
 bilibili.com
 bilibili.tv
 bilivideo.com
+
+friday.tw
 "
 dns_domains["JP"]="
 control.kochava.com
