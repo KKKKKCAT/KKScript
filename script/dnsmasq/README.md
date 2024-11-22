@@ -1,4 +1,4 @@
-# KKScript - Dnsmasq 一鍵安裝腳本v1.0.3 (21/11/2024更新)
+# KKScript - Dnsmasq 一鍵安裝腳本v1.0.5 (22/11/2024更新)
 
 |||
 | -------- | ---------- |
@@ -62,3 +62,4 @@
 - v1.0.0 (04/05/2024)：初始發布版本。
 - v1.0.1 (15/06/2024)：Abema解鎖新加了"vod-playout-abematv.akamaized.net" & "live-playout-abematv.akamaized.net" 不然有些直播或影片會看不到
 - v1.0.3 (21/11/2024)：新增TW friday.tw
+- v1.0.5 (22/11/2024)：新增SG區(meWATCH, Starhub TV+)、新增Tiktok區、新增TVBAnywhere+區、新增HBO Max區、加入Hotstar相關域名到Netflix/Disney+區、舊有HK區中的mytvsuper相關域名更正以分開mytvsuper與新增TVBAnywhere+(需要刪除/etc/dnsmasq.conf重新配置一次dns)
