@@ -2,7 +2,7 @@
 
 |||
 | -------- | ---------- |
-|![](https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/dnsmasq/dnsmasq.png)|![](https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/dnsmasq/kkcatttt.jpg)|
+|![](https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/dnsmasq/dnsmasq2.webp)|![](https://raw.githubusercontent.com/KKKKKCAT/KKScript/main/script/dnsmasq/kkcatttt.jpg)|
 
 這個 Bash 腳本提供了一個簡便的方法來安裝、配置和管理 Dnsmasq 服務。它包括多個操作選項，如安裝、配置、啟動、停止、重啟以及卸載 Dnsmasq。
 
