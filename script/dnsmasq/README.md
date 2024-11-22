@@ -6,6 +6,10 @@
 
 這個 Bash 腳本提供了一個簡便的方法來安裝、配置和管理 Dnsmasq 服務。它包括多個操作選項，如安裝、配置、啟動、停止、重啟以及卸載 Dnsmasq。
 
+## ⚠️詳細新增區域代碼教學 (適合高度自定義使用 ~~盡量避免打擾慵懶的作者~~)
+
+https://github.com/KKKKKCAT/KKScript/blob/main/script/dnsmasq/setting.md
+
 ## 功能簡介
 
 - **安裝 Dnsmasq**：自動從官方倉庫安裝 Dnsmasq。
