@@ -1,6 +1,7 @@
 ### **新增區域的完整教學**
 
 如果您想新增 **SG 區域** 和 **Tiktok 區域** 的配置，可以參照現有代碼結構，直接在 `declare -A dns_domains` 區塊中加入新的區域及其域名清單。以下是完整的代碼增補：
+
 具體相關域名可參考：https://github.com/1-stream/1stream-public-utils/blob/main/stream.list.json
 
 ---
