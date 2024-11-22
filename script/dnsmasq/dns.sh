@@ -184,25 +184,61 @@ viu.tv
 viu.com
 viu.now.com
 
-bigbigchannel.com.hk
-bigbigshop.com
-content.jwplatform.com
-encoretvb.com
+
 mytvsuper.com
 mytvsuperlimited.hb.omtrdc.net
 mytvsuperlimited.sc.omtrdc.net
 tvb.com
-tvb.com.au
+
+hoy.tv
+"
+
+dns_domains["SG"]="
+mewatch.sg
+starhubgo.com
+failoverstarhub.akamaized.net
+scvm1sc0-ssm.anycast.nagra.com
+starhubtvplus.com
+"
+
+dns_domains["Tiktok"]="
+byteoversea.com
+ibytedtos.com
+ipstatp.com
+muscdn.com
+musical.ly
+tiktok.com
+tik-tokapi.com
+tiktokcdn.com
+tiktokv.com
+
+"
+
+dns_domains["TVBAnywhere"]="
 tvbanywhere.com
 tvbanywhere.com.sg
+uapisfm.tvbanywhere.com.sg
+tvb.com
+tvb.com.au
 tvbc.com.cn
 tvbeventpower.com.hk
 tvbusa.com
 tvbweekly.com
 tvmedia.net.au
-videos-f.jwpsrv.com
 
-hoy.tv
+"
+
+dns_domains["Max"]="
+max.com
+hbo.com
+hbogo.com
+hbomax.com
+hbomaxcdn.com
+hbonow.com
+maxgo.com
+discomax.com
+
+
 "
 
 dns_domains["Disney_Netflix"]="
@@ -245,6 +281,10 @@ dssott.com
 disneynow.com
 disneystreaming.com
 cdn.registerdisney.go.com
+
+
+hotstar.com
+hotstarext.com
 "
 
 dns_domains["ChatGPT"]="
@@ -289,7 +329,7 @@ NC='\033[0m' # No Color
 
 show_info() {
     echo -e ""
-    echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.3 (21/11/2024更新) ${NC}"
+    echo -e "  ${On_Yellow}Dnsmasq 一鍵安裝腳本v1.0.5 (22/11/2024更新) ${NC}"
     echo -e ""
     echo -e "  ${BIGreen}作者${NC}: ${BIYellow}KKKKKCAT${NC}"
     echo -e "  ${BIGreen}博客${NC}: ${BIYellow}https://kkcat.blog${NC}"
@@ -306,12 +346,20 @@ show_info() {
         tw_dns=$(grep 'kktv.me' /etc/dnsmasq.conf | cut -d '/' -f 4)
         jp_dns=$(grep 'dmm.co.jp' /etc/dnsmasq.conf | cut -d '/' -f 4)
         hk_dns=$(grep 'viu.tv' /etc/dnsmasq.conf | cut -d '/' -f 4)
+        sg_dns=$(grep 'mewatch.sg' /etc/dnsmasq.conf | cut -d '/' -f 4)
+        tiktok_dns=$(grep 'tiktok.com' /etc/dnsmasq.conf | cut -d '/' -f 4)
+        tvbanywhere_dns=$(grep 'tvbeventpower.com.hk' /etc/dnsmasq.conf | cut -d '/' -f 4)
+        max_dns=$(grep 'max.com' /etc/dnsmasq.conf | cut -d '/' -f 4)
         disney_dns=$(grep 'netflix.com' /etc/dnsmasq.conf | cut -d '/' -f 4)
         chatgpt_dns=$(grep 'openai.com' /etc/dnsmasq.conf | cut -d '/' -f 4)
     else
         tw_dns=""
         jp_dns=""
         hk_dns=""
+        sg_dns=""
+        tiktok_dns=""
+        tvbanywhere_dns=""
+        max_dns=""
         disney_dns=""
         chatgpt_dns=""
     fi
@@ -319,7 +367,11 @@ show_info() {
     echo -e "${BICyan}TW DNS：${NC}${BIWhite}${tw_dns}${NC}"
     echo -e "${BICyan}JP DNS：${NC}${BIWhite}${jp_dns}${NC}"
     echo -e "${BICyan}HK DNS：${NC}${BIWhite}${hk_dns}${NC}"
-    echo -e "${BICyan}Disney+/Netflix DNS：${NC}${BIWhite}${disney_dns}${NC}"
+    echo -e "${BICyan}SG DNS：${NC}${BIWhite}${sg_dns}${NC}"
+    echo -e "${BICyan}Tiktok DNS：${NC}${BIWhite}${tiktok_dns}${NC}"
+    echo -e "${BICyan}TVBAnywhere+ DNS：${NC}${BIWhite}${tvbanywhere_dns}${NC}"
+    echo -e "${BICyan}HBO Max DNS：${NC}${BIWhite}${max_dns}${NC}"
+    echo -e "${BICyan}Disney+/Netflix/Hotstar DNS：${NC}${BIWhite}${disney_dns}${NC}"
     echo -e "${BICyan}ChatGPT DNS：${NC}${BIWhite}${chatgpt_dns}${NC}"
 
     echo -e ""
@@ -362,8 +414,12 @@ case $action in
         echo -e "${BIYellow}1. 台灣 (TW)${NC}"
         echo -e "${BIBlue}2. 日本 (JP)${NC}"
         echo -e "${BIYellow}3. 香港 (HK)${NC}"
-        echo -e "${BIBlue}4. Disney+/Netflix${NC}"
-        echo -e "${BIYellow}5. ChatGPT${NC}"
+        echo -e "${BIBlue}4. 新加坡 (SG)${NC}"
+        echo -e "${BIYellow}5. Tiktok${NC}"
+        echo -e "${BIBlue}6. TVBAnywhere+${NC}"
+        echo -e "${BIYellow}7. HBO Max${NC}"
+        echo -e "${BIBlue}8. Disney+/Netflix/Hotstar${NC}"
+        echo -e "${BIYellow}9. ChatGPT${NC}"
         echo -e ""
         read -p "輸入選擇（例如：1）或按 Enter 取消: " region_choice
 
@@ -380,8 +436,12 @@ case $action in
             1) selected_region="TW";;
             2) selected_region="JP";;
             3) selected_region="HK";;
-            4) selected_region="Disney_Netflix";;
-            5) selected_region="ChatGPT";;
+            4) selected_region="SG";;
+            5) selected_region="Tiktok";;
+            6) selected_region="TVBAnywhere";;
+            7) selected_region="Max";;
+            8) selected_region="Disney_Netflix";;
+            9) selected_region="ChatGPT";;
             *) echo -e "${BIRed}選擇的區域無效，請重新運行腳本。${NC}"; exit 1;;
         esac
 
