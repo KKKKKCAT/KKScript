@@ -54,27 +54,23 @@ dns_domains["ChatGPT"]="
 ...
 "
 dns_domains["SG"]="
-m1.com.sg
-singtel.com
-starhub.com
-toggle.sg
-mediacorp.sg
-hooq.tv
-spike.com.sg
-viki.com
-iflix.com
 mewatch.sg
+starhubgo.com
+failoverstarhub.akamaized.net
+scvm1sc0-ssm.anycast.nagra.com
+starhubtvplus.com
 "
 
 dns_domains["Tiktok"]="
+byteoversea.com
+ibytedtos.com
+ipstatp.com
+muscdn.com
+musical.ly
 tiktok.com
+tik-tokapi.com
 tiktokcdn.com
 tiktokv.com
-musical.ly
-douyin.com
-p16-tiktokcdn.com
-p16-tiktokcdn-us.com
-p16-tiktokcdn-rt.com
 "
 ```
 
