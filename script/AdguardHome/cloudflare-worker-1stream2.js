@@ -48,7 +48,6 @@ async function handleRequest(request) {
         </script>
       </body>
       </html>
-      
       `,
       { headers: { "Content-Type": "text/html" } }
     );
@@ -82,7 +81,10 @@ async function handleRequest(request) {
         } else if (line.startsWith("# >")) {
           formattedLines.push(line);
         } else if (line && !line.startsWith("#")) {
+          // 保留原始規則
           formattedLines.push(`||${line.trim()}^$dnsrewrite=NOERROR;A;${ip}`);
+          // 增加帶有 *. 的規則
+          formattedLines.push(`||*.${line.trim()}^$dnsrewrite=NOERROR;A;${ip}`);
         }
       }
 
