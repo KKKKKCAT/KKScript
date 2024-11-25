@@ -3,7 +3,7 @@ addEventListener("fetch", (event) => {
 });
 
 async function handleRequest(request) {
-  const url = "https://raw.githubusercontent.com/1-stream/1stream-public-utils/refs/heads/main/stream.adg.list";
+  const url = "https://raw.githubusercontent.com/KKKKKCAT/KKScript/refs/heads/main/script/AdguardHome/stream.list";
 
   if (request.method === "POST") {
     try {
