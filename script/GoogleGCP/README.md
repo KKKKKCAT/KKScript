@@ -22,6 +22,9 @@ sudo apt-get install google-cloud-sdk
 gcloud version
 ```
 
+服務帳號需要適當的 GCP 權限:
+![](https://github.com/KKKKKCAT/KKScript/raw/refs/heads/main/script/GoogleGCP/gcp01.webp)
+
 ---
 
 1. 基本功能：
